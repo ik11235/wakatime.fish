@@ -11,10 +11,11 @@ function register_wakatime_fish_before_exec -e fish_preexec
     return 1
   end
 
-  if echo (pwd) | grep -qEi "^/Users/$USER/Sites/"
-      set  project (echo (pwd) | sed "s#^/Users/$USER/Sites/\\([^/]*\\).*#\\1#")
+  if git rev-parse --is-inside-work-tree 2>&1 > /dev/null
+    set project (basename (git rev-parse --show-toplevel))
   else
-      set  project "Terminal"
+    set project "Terminal"
   end
+
   $wakatime_path --write --plugin "ik11235/wakatime.fish/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
 end
