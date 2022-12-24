@@ -1,3 +1,10 @@
+###
+# wakatime.fish
+#
+#　hook script to send wakatime a tick (unofficial)
+# see: https://github.com/ik11235/wakatime.fish
+###
+
 function register_wakatime_fish_before_exec -e fish_preexec
   set -l PLUGIN_NAME "ik11235/wakatime.fish"
   set -l PLUGIN_VERSION "0.0.1"
