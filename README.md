@@ -23,10 +23,6 @@ Unofficial script for wakatime tracking in the fish shell.
 If it does not work, please refer to the [official documentation](https://wakatime.com/terminal).
 
 ```bash
-pip install wakatime
-
-# or
-
 curl https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py | python3 -
 ```
 
