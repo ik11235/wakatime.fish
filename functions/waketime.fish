@@ -1,4 +1,7 @@
 function register_wakatime_fish_before_exec -e fish_preexec
+  set -l PLUGIN_NAME "ik11235/wakatime.fish"
+  set -l PLUGIN_VERSION "0.0.1"
+
   set -l project
   set -l wakatime_path
 
@@ -17,5 +20,5 @@ function register_wakatime_fish_before_exec -e fish_preexec
     set project "Terminal"
   end
 
-  $wakatime_path --write --plugin "ik11235/wakatime.fish/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
+  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
 end
