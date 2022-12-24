@@ -14,5 +14,5 @@ function register_wakatime_fish_before_exec -e fish_preexec
   else
       set  project "Terminal"
   end
-  $wakatime_path --write --plugin "ik11235/waketime.fish/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
+  $wakatime_path --write --plugin "ik11235/wakatime.fish/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
 end
