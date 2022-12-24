@@ -1,12 +1,14 @@
 function register_wakatime_fish_before_exec -e fish_preexec
   set -l project
-  set -l wakatime_path (type -p wakatime)
-  if test -z "$wakatime_path"
-     set wakatime_path (type -p ~/.wakatime/wakatime-cli)
-     if test -z "$wakatime_path"
-       echo "wakatime command not found. Please read \"https://wakatime.com/terminal\" and install wakatime."
-       return 1
-     end
+  set -l wakatime_path
+
+  if type -p wakatime 2>&1 > /dev/null
+    set wakatime_path (type -p wakatime)
+  else if type -p ~/.wakatime/wakatime-cli 2>&1 > /dev/null
+    set wakatime_path (type -p ~/.wakatime/wakatime-cli)
+  else
+    echo "wakatime command not found. Please read \"https://wakatime.com/terminal\" and install wakatime."
+    return 1
   end
 
   if echo (pwd) | grep -qEi "^/Users/$USER/Sites/"
