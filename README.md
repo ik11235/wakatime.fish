@@ -26,6 +26,14 @@ If it does not work, please refer to the [official documentation](https://wakati
 curl https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py | python3 -
 ```
 
+#### fisher Install
+
+If it does not work, please refer to the [official documentation](https://github.com/jorgebucaran/fisher#installation).
+
+```fish
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+```
+
 
 ### Installation
 
