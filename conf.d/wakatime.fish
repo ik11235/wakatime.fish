@@ -5,7 +5,7 @@
 # see: https://github.com/ik11235/wakatime.fish
 ###
 
-function register_wakatime_fish_before_exec -e fish_preexec
+function __register_wakatime_fish_before_exec -e fish_preexec
   set -l PLUGIN_NAME "ik11235/wakatime.fish"
   set -l PLUGIN_VERSION "0.0.1"
 
