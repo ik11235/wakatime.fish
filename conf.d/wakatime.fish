@@ -5,7 +5,7 @@
 # see: https://github.com/ik11235/wakatime.fish
 ###
 
-function register_wakatime_fish_before_exec -e fish_preexec
+function __register_wakatime_fish_before_exec -e fish_preexec
   set -l PLUGIN_NAME "ik11235/wakatime.fish"
   set -l PLUGIN_VERSION "0.0.1"
 
@@ -21,11 +21,11 @@ function register_wakatime_fish_before_exec -e fish_preexec
     return 1
   end
 
-  if git rev-parse --is-inside-work-tree 2>&1 > /dev/null
+  if git rev-parse --is-inside-work-tree &> /dev/null
     set project (basename (git rev-parse --show-toplevel))
   else
     set project "Terminal"
   end
 
-  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
+  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) &> /dev/null&
 end
