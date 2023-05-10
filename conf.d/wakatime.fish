@@ -9,6 +9,14 @@ function __register_wakatime_fish_before_exec -e fish_preexec
   if set -q FISH_WAKATIME_DISABLED
     return 0
   end
+  
+  set -l last_command
+
+  set last_command (echo $history[1] | cut -d ' ' -f1)
+
+  if test "$last_command" = 'exit'
+    return 0
+  end
 
   set -l PLUGIN_NAME "ik11235/wakatime.fish"
   set -l PLUGIN_VERSION "0.0.3"
@@ -31,5 +39,5 @@ function __register_wakatime_fish_before_exec -e fish_preexec
     set project "Terminal"
   end
 
-  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) &> /dev/null&
+  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity "$last_command" &> /dev/null&
 end
