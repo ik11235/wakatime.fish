@@ -31,5 +31,5 @@ function __register_wakatime_fish_before_exec -e fish_preexec
     set project "Terminal"
   end
 
-  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) &> /dev/null&
+  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) &> /dev/null&; disown
 end
