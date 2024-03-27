@@ -39,5 +39,5 @@ function __register_wakatime_fish_before_exec -e fish_postexec
     set project "Terminal"
   end
 
-  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity "$exec_command_str" &> /dev/null&
+  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity "$exec_command_str" &> /dev/null&; disown
 end
