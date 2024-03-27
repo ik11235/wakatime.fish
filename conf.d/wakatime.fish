@@ -1,7 +1,7 @@
 ###
 # wakatime.fish
 #
-#　hook script to send wakatime a tick (unofficial)
+# hook script to send wakatime a tick (unofficial)
 # see: https://github.com/ik11235/wakatime.fish
 ###
 
