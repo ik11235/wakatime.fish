@@ -12,7 +12,7 @@ function __register_wakatime_fish_before_exec -e fish_postexec
   
   set -l exec_command_str
 
-  set exec_command_str (echo $argv | cut -d ' ' -f1)
+  set exec_command_str (string split -f1 ' ' "$argv")
 
   if test "$exec_command_str" = 'exit'
     return 0
