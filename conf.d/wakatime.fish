@@ -5,16 +5,16 @@
 # see: https://github.com/ik11235/wakatime.fish
 ###
 
-function __register_wakatime_fish_before_exec -e fish_preexec
+function __register_wakatime_fish_before_exec -e fish_postexec
   if set -q FISH_WAKATIME_DISABLED
     return 0
   end
   
-  set -l last_command
+  set -l exec_command_str
 
-  set last_command (echo $history[1] | cut -d ' ' -f1)
+  set exec_command_str (echo $argv | cut -d ' ' -f1)
 
-  if test "$last_command" = 'exit'
+  if test "$exec_command_str" = 'exit'
     return 0
   end
 
@@ -39,5 +39,5 @@ function __register_wakatime_fish_before_exec -e fish_preexec
     set project "Terminal"
   end
 
-  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity "$last_command" &> /dev/null&
+  $wakatime_path --write --plugin "$PLUGIN_NAME/$PLUGIN_VERSION" --entity-type app --project "$project" --entity "$exec_command_str" &> /dev/null&
 end
