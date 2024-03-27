@@ -19,7 +19,7 @@ function __register_wakatime_fish_before_exec -e fish_postexec
   end
 
   set -l PLUGIN_NAME "ik11235/wakatime.fish"
-  set -l PLUGIN_VERSION "0.0.4"
+  set -l PLUGIN_VERSION "0.0.5"
 
   set -l project
   set -l wakatime_path
